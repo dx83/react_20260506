@@ -52,7 +52,11 @@ const Item = () => {
                         setCnt(pageSize);
                     },
                     placement: ["bottomCenter"],
-                    showTotal: (total) => `게시물 ${total}개`,
+                    showTotal: (total) => (
+                        <span style={{color: '#fff'}}>
+                            게시물 {total}개
+                        </span>
+                    ),
                     showSizeChanger: true,
                     pageSizeOptions: ["5", "10", "20", "50", "100"],
                 }}
