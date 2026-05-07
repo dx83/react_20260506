@@ -5,6 +5,8 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import ItemInsert from './pages/ItemInsert';
+import ItemDetail from './pages/ItemDetail';
+import ItemImageInsert from './pages/ItemImageInsert';
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/item" element={<Item />} />
         <Route path="/item/insert" element={<ItemInsert />} />
+        <Route path="/item/detail" element={<ItemDetail />} />
+        <Route path="/itemimage/insert" element={<ItemImageInsert />} />
       </Routes>
     </div>
   );

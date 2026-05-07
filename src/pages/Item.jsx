@@ -1,9 +1,11 @@
 import { Button, Table } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Item = () => {
+
+    const navigate = useNavigate();
 
     // 컬럼명 설정
     const columns = [
@@ -60,6 +62,12 @@ const Item = () => {
                     showSizeChanger: true,
                     pageSizeOptions: ["5", "10", "20", "50", "100"],
                 }}
+
+                onRow={(record) => ({
+                    onClick: () => {
+                        navigate(`/item/detail?code=${record.code}`);
+                    }
+                })}
             />
         </div>
     );
