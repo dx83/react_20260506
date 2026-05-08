@@ -11,25 +11,6 @@ const ItemImageInsert = () => {
     const code = searchParams.get("code");
     const [fileList, setFileList] = useState([]);
 
-    const uploadStyle = `
-  /* 파일 이름 글자색 */
-  .ant-upload-list-item-name {
-    color: white !important;
-  }
-  /* 파일 아이콘 색상 */
-  .ant-upload-list-item-icon .anticon {
-    color: rgba(255, 255, 255, 0.85) !important;
-  }
-  /* 삭제 버튼(휴지통) 색상 */
-  .ant-upload-list-item-action .anticon {
-    color: rgba(255, 255, 255, 0.65) !important;
-  }
-  /* 마우스 올렸을 때 배경색 (너무 밝으면 글자가 안 보이므로 조절) */
-  .ant-upload-list-item:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-  }
-`;
-
     const props = {
         name: 'file',
         multiple: true,
@@ -64,9 +45,7 @@ const ItemImageInsert = () => {
     };
 
     return (
-        <div className="item-detail-container">
-            <style>{uploadStyle}</style>
-            
+        <div>
             <h3>물품이미지등록</h3>
             <Link to={`/item/detail?code=${code}`}>
                 <Button type="primary">이전페이지</Button>
