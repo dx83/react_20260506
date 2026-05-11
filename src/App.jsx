@@ -11,10 +11,10 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import Logout from './pages/Logout';
 import Mypage from './pages/Mypage';
-import MemberUpdate from './pages/mypage/MemberUpdate';
-import MemberPassword from './pages/mypage/MemberPassword';
-import MemberDelete from './pages/mypage/MemberDelete';
-import MemberPurchase from './pages/mypage/MemberPurchase';
+import Update from './pages/mypage/Update';
+import Password from './pages/mypage/Password';
+import Delete from './pages/mypage/Delete';
+import Purchase from './pages/mypage/Purchase';
 
 const App = () => {
 
@@ -54,10 +54,10 @@ const App = () => {
         <Route path="/customer/join" element={<Join />} />
         <Route path="/customer/logout" element={<Logout />} />
         <Route path="/customer/mypage" element={<Mypage />}>
-          <Route path="update" element={<MemberUpdate />} />
-          <Route path="password" element={<MemberPassword />} />
-          <Route path="delete" element={<MemberDelete />} />
-          <Route path="purchase" element={<MemberPurchase />} />
+          <Route path="update" element={<Update />} />
+          <Route path="password" element={<Password />} />
+          <Route path="delete" element={<Delete />} />
+          <Route path="purchase" element={<Purchase />} />
         </Route>
       </Routes>
     </div>

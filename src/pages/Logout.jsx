@@ -10,11 +10,8 @@ const Logout = () => {
     useEffect(() => {
         if (window.confirm('로그아웃 할까요?')) {
             dispatch(logout());
-            navigate("/");
         }
-        else {
-            navigate("/");
-        }
+        navigate("/");
     }, [dispatch]);
 };
 

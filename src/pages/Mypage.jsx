@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from '../assets/hero.png';
 import { Button } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const Mypage = () => {
+    const navigate = useNavigate();
+    
     return (
         <div>
             <p><img src={logo} alt="hero" width={100} /></p>
