@@ -1,6 +1,5 @@
 import { Button, Form, Input } from 'antd';
 import axios from 'axios';
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 

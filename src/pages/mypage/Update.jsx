@@ -1,24 +1,40 @@
 import { Button, Form, Input } from 'antd';
-import React from 'react';
+import api from '../../api/axios';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Update = () => {
-
+    const navigate = useNavigate();
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
-
+        console.log(values);
+        const url = `/customer/update.do`;
+        const { data } = await api.put(url, values);
+        console.log(data);
+        if (data.status === 200) {
+            alert('회원 정보가 변경되었습니다.');
+            navigate('/customer/mypage');
+        }
     };
 
-    const handleData = async() => {
-      // 백엔드에서 회원 1인 조회가 필요
+    const handleUpdate = async () => {
+        const { data } = await api.get('/customer/info.do');
+        console.log(data);
+        if (data.status === 200) {
+            form.setFieldsValue(data.result[0]);
+        }
     };
+
+    useEffect(() => {
+        handleUpdate();
+    }, []);
 
     return (
         <div>
-            <h1>회원정보 변경</h1>
+            <h1>회원정보 수정</h1>
             <Form
                 form={form}
-                name="itemInsert"
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 16 }}
                 style={{ maxWidth: 600 }}
@@ -34,14 +50,6 @@ const Update = () => {
                 </Form.Item>
 
                 <Form.Item
-                    label="전화번호"
-                    name="phone"
-                    rules={[{ required: true, message: '전화번호를 입력하세요!' }]}
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
                     label="이름"
                     name="name"
                     rules={[{ required: true, message: '이름을 입력하세요!' }]}
@@ -49,9 +57,17 @@ const Update = () => {
                     <Input />
                 </Form.Item>
 
+                <Form.Item
+                    label="연락처"
+                    name="phone"
+                    rules={[{ required: true, message: '연락처를 입력하세요!' }]}
+                >
+                    <Input />
+                </Form.Item>
+
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">
-                        회원정보 변경
+                        회원정보 수정
                     </Button>
                 </Form.Item>
             </Form>

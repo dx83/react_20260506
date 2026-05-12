@@ -1,6 +1,5 @@
-import axios from 'axios';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import api from '../../api/axios';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../reducer/loggedSlice';
 import { Button, Form, Input } from 'antd';
@@ -9,23 +8,20 @@ const Delete = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { token, isLogin } = useSelector((state) => state.logged);
-
     const onFinish = async (values) => {
-        // 백엔드에서 회원 1인 조회가 필요
-        const url = `/api/customer/delete.do`;
-        const headers = { "Authorization": `Bearer ${token}` };
-        //const { data } = await axios.put(url, values, { headers });
-        //console.log(data);
-        //if (data.status === 200) {
-        //    if (window.confirm('회원 탈퇴하시겠습니까?')) {
-        //        dispatch(logout());
-        //        navigate("/");
-        //    }
-        //}
-        //else {
-        //    alert("비밀번호가 틀립니다!");
-        //}
+        console.log(values);
+        if (window.confirm('회원 탈퇴하시겠습니까?')) {
+            const url = `/customer/delete.do`;
+            const { data } = await api.put(url, values);
+            console.log(data);
+            if (data.status === 200) {
+                dispatch(logout());
+                navigate("/");
+            }
+            else {
+                alert('비밀번호가 틀립니다.');
+            }
+        }
     };
 
     return (

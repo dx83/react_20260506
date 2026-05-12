@@ -1,6 +1,5 @@
 import { Button, Form, Input } from 'antd';
 import axios from 'axios';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../reducer/loggedSlice';
@@ -16,8 +15,9 @@ const Login = () => {
         //console.log(data);
         if (data.result === 1) {
             alert("로그인 성공");
-            dispatch(login({ token: data.accessToken }));
-            navigate("/");
+            // 로그인시 access, refresh token 둘자 저장해야됨
+            dispatch(login({ token: data.accessToken, refreshToken: data.refreshToken }));
+            navigate("/", { replace: true });
         }
     };
 
@@ -41,7 +41,7 @@ const Login = () => {
                     rules={[{ required: true, message: '비밀번호를 입력하세요!' }]}>
                     <Input.Password></Input.Password>
                 </Form.Item>
-                <Form.Item  wrapperCol={{ offset: 1}}>
+                <Form.Item wrapperCol={{ offset: 1 }}>
                     <Button type="primary" htmlType='submit'>로그인</Button>
                 </Form.Item>
             </Form>
