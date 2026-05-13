@@ -14,6 +14,7 @@ import Update from './pages/mypage/Update';
 import Password from './pages/mypage/Password';
 import Delete from './pages/mypage/Delete';
 import Purchase from './pages/mypage/Purchase';
+import Chat from './pages/Chat';
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
 
       <Link to="/"><Button>Home</Button></Link>
       <Link to="/item"><Button>item</Button></Link>
+      <Link to="/chat"><Button>Chat</Button></Link>
 
       {isLogin ? (
         <span>
@@ -58,6 +60,7 @@ const App = () => {
           <Route path="delete" element={<Delete />} />
           <Route path="purchase" element={<Purchase />} />
         </Route>
+        <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </div>
   );
